@@ -29,9 +29,11 @@ gerador_imagens = ImageDataGenerator(rescale=1.0/255.0,
 iterador_imagens = gerador_imagens.flow_from_directory('./dataset/',
                                         class_mode='binary', batch_size=64, target_size=(200, 200))
 resultados = modelo.fit(iterador_imagens, steps_per_epoch=len(iterador_imagens),
-                    epochs=20, verbose=2)
+                    epochs=1, verbose=2)
 
-modelo.save('model.h5')
+# modelo.save('model.h5')
+
+print(resultados.history)
 
 pyplot.subplot(211)
 pyplot.title('Perda em Entropia Cruzada')

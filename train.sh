@@ -1,0 +1,1 @@
+sudo docker run -v "$PWD":/var/task -it cats-dogs /var/task/train.py
