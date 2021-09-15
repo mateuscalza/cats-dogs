@@ -5,7 +5,6 @@ from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Flatten
-from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 modelo = Sequential()
@@ -26,22 +25,15 @@ modelo.compile(optimizer='adam', loss='binary_crossentropy',
 
 gerador_imagens = ImageDataGenerator(rescale=1.0/255.0,
                               shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-iterador_imagens = gerador_imagens.flow_from_directory('./dataset/',
+iterador_imagens = gerador_imagens.flow_from_directory('./treinamento',
+                                        class_mode='binary', batch_size=64, target_size=(200, 200))
+iterador_imagens_validacao = gerador_imagens.flow_from_directory('./validacao',
                                         class_mode='binary', batch_size=64, target_size=(200, 200))
 resultados = modelo.fit(iterador_imagens, steps_per_epoch=len(iterador_imagens),
+                    validation_data=iterador_imagens_validacao, validation_steps=len(iterador_imagens_validacao),
                     epochs=20, verbose=2)
 
-modelo.save('model.h5')
+modelo.save('modelo.h5')
 
-pyplot.subplot(211)
-pyplot.title('Perda em Entropia Cruzada')
-pyplot.plot(resultados.history['loss'], color='blue', label='train')
-pyplot.plot(resultados.history['val_loss'], color='orange', label='test')
-pyplot.subplot(212)
-pyplot.title('Precisão da classificação')
-pyplot.plot(resultados.history['accuracy'], color='blue', label='train')
-pyplot.plot(resultados.history['val_accuracy'], color='orange', label='test')
-pyplot.savefig('resultados.png')
-pyplot.tight_layout()
-pyplot.show()
-pyplot.close()
+_, acc = modelo.evaluate(iterador_imagens_validacao, steps=len(iterador_imagens_validacao), verbose=0)
+print('Precisão = %.2f' % (acc * 100.0))

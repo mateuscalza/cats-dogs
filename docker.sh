@@ -1,0 +1,1 @@
+docker run  -v "$PWD":/var/task --gpus all -it tensorflow/tensorflow:latest-gpu bash
