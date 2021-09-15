@@ -10,5 +10,3 @@ imagem = imagem / 255
 modelo = load_model('./model.h5')
 resultado = modelo.predict(imagem)
 print(resultado[0])
-
-# curl -X POST -H "Content-Type: application/json" -d '{"value1":"Cão"}' https://maker.ifttt.com/trigger/cnn/with/key/bR-SPDtEx7xff4ATykxN05bD1VrBz-ULUzuyyIV0Vyl
