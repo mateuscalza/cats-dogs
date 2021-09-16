@@ -8,7 +8,7 @@ from random import random
 dataset_home = './'
 subdirs = ['treinamento/', 'validacao/']
 for subdir in subdirs:
-	labeldirs = ['cachorros/', 'gatos/']
+	labeldirs = ['dogs/', 'cats/']
 	for labldir in labeldirs:
 		newdir = dataset_home + subdir + labldir
 		makedirs(newdir, exist_ok=True)
@@ -22,8 +22,8 @@ for file in listdir(src_directory):
 	if random() < val_ratio:
 		dst_dir = 'validacao/'
 	if file.startswith('cat'):
-		dst = dataset_home + dst_dir + 'gatos/'  + file
+		dst = dataset_home + dst_dir + 'cats/'  + file
 		copyfile(src, dst)
 	elif file.startswith('dog'):
-		dst = dataset_home + dst_dir + 'cachorros/'  + file
+		dst = dataset_home + dst_dir + 'dogs/'  + file
 		copyfile(src, dst)

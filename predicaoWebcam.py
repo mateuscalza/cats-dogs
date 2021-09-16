@@ -3,8 +3,8 @@ import numpy as np
 from PIL import Image
 from tensorflow.keras import models
 
-modelo = models.load_model('./model.h5')
-video = cv2.VideoCapture(1)
+modelo = models.load_model('./modelo.h5')
+video = cv2.VideoCapture(0)
 
 while True:
     _, frame = video.read()
