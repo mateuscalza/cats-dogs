@@ -21,8 +21,9 @@ print(classificacao, '{0:.2f}%'.format(acuracia * 100))
 
 dados_explainer = (imagem, None)
 explainer = GradCAM()
-imagem_analise = explainer.explain(dados_explainer, modelo, class_index=0)
+imagem_analise = explainer.explain(dados_explainer, modelo, class_index=0, colormap=cv2.COLORMAP_JET)
 
+imagem_analise = cv2.cvtColor(imagem_analise, cv2.COLOR_BGR2RGB)
 cv2.imshow("Analise", imagem_analise)
 
 while True:

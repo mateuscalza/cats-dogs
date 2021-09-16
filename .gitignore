@@ -235,4 +235,6 @@ $RECYCLE.BIN/
 
 treinamento/
 validacao/
+predicao/
+predicaoSaida/
 *.h5
