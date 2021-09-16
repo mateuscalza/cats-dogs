@@ -3,32 +3,21 @@ from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Flatten
-from tensorflow.keras.layers import Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 modelo = Sequential()
-
 modelo.add(Conv2D(32, (3, 3), activation='relu',
           kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 modelo.add(MaxPooling2D((2, 2)))
-modelo.add(Dropout(0.2))
-
 modelo.add(Conv2D(64, (3, 3), activation='relu',
           kernel_initializer='he_uniform', padding='same'))
 modelo.add(MaxPooling2D((2, 2)))
-modelo.add(Dropout(0.2))
-
 modelo.add(Conv2D(128, (3, 3), activation='relu',
           kernel_initializer='he_uniform', padding='same'))
 modelo.add(MaxPooling2D((2, 2)))
-modelo.add(Dropout(0.2))
-
 modelo.add(Flatten())
-
 modelo.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
-modelo.add(Dropout(0.5))
 modelo.add(Dense(1, activation='sigmoid'))
-
 modelo.compile(optimizer='adam', loss='binary_crossentropy',
               metrics=['accuracy'])
 
