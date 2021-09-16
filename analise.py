@@ -2,6 +2,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from tf_explain.core.grad_cam import GradCAM
+import cv2
 
 imagem = load_img('./predicao/cachorro2.jpg', target_size=(200, 200))
 imagem = img_to_array(imagem)
@@ -18,7 +19,15 @@ else:
   classificacao = 'Cachorro'
 print(classificacao, '{0:.2f}%'.format(acuracia * 100))
 
-data = (imagem, None)
+dados_explainer = (imagem, None)
 explainer = GradCAM()
-grid = explainer.explain(data, modelo, class_index=0)
-explainer.save(grid, ".", "grad_cam.png")
+imagem_analise = explainer.explain(dados_explainer, modelo, class_index=0)
+
+cv2.imshow("Analise", imagem_analise)
+
+while True:
+    key = cv2.waitKey(0) & 0xFF
+    if key == 27:
+        cv2.destroyAllWindows()
+        break
+
