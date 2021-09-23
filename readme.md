@@ -12,7 +12,7 @@ Dataset Dogs vs Cats.
 
 ## Configuração
 
-Modelo pré-treinado pode ser encontrado em: https://drive.google.com/file/d/1Ze7MVTOKKsKYmEGNz7bNnZsnJR7OObUy/view?usp=sharing
+Posicione o modelo pré-treinado na raiz do projeto, ele pode ser encontrado em: https://drive.google.com/file/d/1Ze7MVTOKKsKYmEGNz7bNnZsnJR7OObUy/view?usp=sharing
 
 ### Treinamento
 
