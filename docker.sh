@@ -1,1 +1,1 @@
-docker run  -v "$PWD":/var/task --gpus all -it tensorflow/tensorflow:latest-gpu bash
+docker run  -v "$PWD":/var/task --gpus all -it datamachines/cudnn_tensorflow_opencv:11.4.1_2.6.0_4.5.3-20210812 bash -c "cd /var/task && pip install tf-explain && bash"
