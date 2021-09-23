@@ -5,8 +5,8 @@ import cv2
 fonte = cv2.FONT_HERSHEY_SIMPLEX
 fonte_escala = 0.8
 texto_posicao = (10, 230)
-texto_cor = (255, 0, 0)
-texto_largura = 1
+texto_cor = (255, 255, 255)
+texto_largura = 2
 rodape = np.zeros((50,400,3), np.uint8)
 
 def imagem_predicao_analise(modelo, imagem):
