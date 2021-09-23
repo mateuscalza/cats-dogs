@@ -12,7 +12,7 @@ while True:
     imagem_pil = imagem_pil.resize((200, 200))
     imagem_array = np.array(imagem_pil) 
 
-    cv2.imshow("Redimensionada", imagem_array)
+    cv2.imshow("Entrada", imagem_array)
 
     imagem_array = imagem_array.reshape(1, 200, 200, 3)
     imagem_array = imagem_array.astype('float32')

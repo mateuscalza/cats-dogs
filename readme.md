@@ -49,5 +49,5 @@ python predicaoArquivos.py
 Para fazer a predição em tempo real usando a webcam, execute o seguinte comando:
 
 ```bash
-python predicaoWebcam.py
+python main.py
 ```
